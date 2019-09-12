@@ -14,6 +14,8 @@ source venv/bin/activate
 pip3 install reusables
 
 python3 project_setup.py
+
+# PUT YOUR CODE IN HERE!
 sudo deploy.sh
 ```
 
