@@ -9,11 +9,12 @@ Designed for:
 Run the setup to rename everything to your own project name.
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
-pip install reusables
+pip3 install reusables
 
-python project_setup.py
+python3 project_setup.py
+sudo deploy.sh
 ```
 
 Create your own config file at /FlaskBootstrap/<project_name>.config.yaml 
