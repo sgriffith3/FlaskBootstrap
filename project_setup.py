@@ -20,7 +20,6 @@ program_name = input('What do you want us to call your program? :').strip()
 shutil.copytree(c('project_name'), c(program_name))
 shutil.rmtree(c('project_name'))
 shutil.move(c('project_name.logging.yaml'), c(f'{program_name}.logging.yaml'))
-shutil.move(c('project_name.nginx'), c(f'{program_name}.nginx'))
 shutil.move(c('project_name.service'), c(f'{program_name}.service'))
 shutil.move(c(os.path.join(program_name, 'static', 'css', 'project_name.css')),
             c(os.path.join(program_name, 'static', 'css', f'{program_name}.css')))
@@ -40,28 +39,14 @@ def replace_file(replace_file):
 
 
 for file in list(reusables.find_files(program_name,
-                                      ext=('css', 'js', 'py', 'html'))):
+                                      ext=('css', 'js', 'py', 'html', 'sh'))):
     replace_file(file)
 
 
 for file in [f'{program_name}.logging.yaml',
-             f'{program_name}.nginx',
              f'{program_name}.service',
              '.gitignore',
              'README.md']:
     replace_file(file)
 
 print('Setup has completed, you may now delete this file\n')
-
-print('Other downloads to consider: ')
-print('JQuery: https://jquery.com/download/')
-print('    <script type="application/javascript" src="/static/js/jquery.min.js"></script>')
-print()
-print('Bootstrap: https://github.com/twbs/bootstrap/releases/latest')
-print('    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>')
-print('    <script type="application/javascript" src="/static/js/bootstrap.bundle.min.js"></script>')
-print()
-print('Dropzone.js: https://gitlab.com/meno/dropzone/builds/artifacts/master/download?job=release')
-print('    <link rel="stylesheet" href="/static/css/dropzone.css"/>')
-print('    <link rel="stylesheet" href="/static/css/basic.css"/>')
-print('    <script type="application/javascript" src="/static/js/dropzone.js"></script>')
