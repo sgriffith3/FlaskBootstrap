@@ -39,13 +39,14 @@ def replace_file(replace_file):
 
 
 for file in list(reusables.find_files(program_name,
-                                      ext=('css', 'js', 'py', 'html', 'sh'))):
+                                      ext=('css', 'js', 'py', 'html'))):
     replace_file(file)
 
 
 for file in [f'{program_name}.logging.yaml',
              f'{program_name}.service',
              '.gitignore',
+             'deploy.sh',
              'README.md']:
     replace_file(file)
 
