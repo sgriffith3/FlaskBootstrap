@@ -12,10 +12,14 @@ Run the setup to rename everything to your own project name.
 python3 -m venv venv
 source venv/bin/activate
 pip3 install reusables
-
 python3 project_setup.py
-
-# PUT YOUR CODE IN HERE!
+# PUT YOUR CODE IN NOW!
+# It goes in <project_name>/views/templated.py
+# Massage it in to existing code
+# Yes, I mean manually
+# Yes, I am sure
+### DON"T GO PAST THIS POINT WITHOUT ADDING YOUR CODE
+chmod +x deploy.sh
 sudo deploy.sh
 ```
 
@@ -41,6 +45,8 @@ python -m project_name
 ## Deploy for project_name
 
 As on Ubuntu 18.04
+
+This is the deploy.sh file
 
 As root:
 ```
