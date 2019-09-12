@@ -16,7 +16,7 @@ pip install reusables
 python project_setup.py
 ```
 
-Create your own config file at <project_name>.config.yaml 
+Create your own config file at /FlaskBootstrap/<project_name>.config.yaml 
 
 Should contain the following items:
 
@@ -42,30 +42,20 @@ As on Ubuntu 18.04
 As root:
 ```
 apt update
-apt install nginx python3-venv python3-pip apache2-utils -y
+apt install python3-venv python3-pip -y
 mkdir /var/log/<project_name>
 addgroup <project_name>
-adduser <project_name> <project_name>
-htpasswd -c /etc/nginx/.htpasswd <admin_user>
+useradd -g <project_name> <project_name>
+
 
 # make the three directories of the current live site (src), backup duirng deploy (backup) and staged files for deployment (staging)
 
-mkdir -p /opt/<project_name> /opt/<project_name>/src /opt/<project_name>/staging /opt/<project_name>/backup
-
+mkdir -p /opt/<project_name> /opt/<project_name>/src 
 # Copy project to /opt/<project_name>/src/
 
 chown -R <project_name>:<project_name> /opt/<project_name>
 sudo -u <project_name> bash -c "python3 -m venv /opt/<project_name>/venv"
 sudo -u <project_name> bash -c "/opt/<project_name>/venv/bin/pip install -r /opt/<project_name>/src/requirements.txt --no-cache"
-
-# copy SSL certificate to /etc/ssl/certs/<project_name>.crt
-# copy SSL key to /etc/ssl/private/<project_name>.key
-
-cp /opt/<project_name>/src/<project_name>.nginx /etc/nginx/sites-available/<project_name>
-chown root:root /etc/nginx/sites-available/<project_name>
-chmod 0644 /etc/nginx/sites-available/<project_name>
-ln -s /etc/nginx/sites-available/<project_name> /etc/nginx/sites-enabled/<project_name>
-rm /etc/nginx/sites-enabled/default
 
 cp /opt/<project_name>/src/<project_name>.service /etc/systemd/system/<project_name>.service
 chown root:root /etc/systemd/system/<project_name>.service
@@ -73,10 +63,5 @@ chmod 0755 /etc/systemd/system/<project_name>.service
 systemctl daemon-reload
 systemctl enable  /etc/systemd/system/<project_name>.service
 systemctl start <project_name>.service
-
-# Modify /etc/nginx/nginx.conf, add under http
-# client_max_body_size 2M;
-
-service nginx restart
 
 ```
