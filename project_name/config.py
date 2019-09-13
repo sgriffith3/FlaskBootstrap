@@ -14,9 +14,9 @@ log = logging.getLogger('<project_name>')
 # i.e. config.env == "development"
 
 config = Box({
-    "env": "development",
+    "env": "production",
     "host": "127.0.0.1",
-    "port": 8080,
+    "port": 12345,
     "session_cache_dir": os.path.join(here, "cache", "session"),
     "session_secret": 'bad_secret',  # make real one with os.urandom(32).hex()
     "data_dir": os.path.join(here, "data"),
