@@ -4,7 +4,7 @@ import logging
 import subprocess
 from flask import render_template, Blueprint
 
-from nodifyer.config import config
+from <project_name>.config import config
 
 
 blueprint = Blueprint('templated', __name__, template_folder='templates')
@@ -35,3 +35,16 @@ def return_info():
         vm = {vm_name: {"cores": cpus, "memory": mem}}
         node.update(vm)
     return node
+
+
+@blueprint.route('/images')
+def return_image_ls():
+    image_list = subprocess.check_output(['ls', '/var/qemu/images']).split('\n')
+    image_dict = {'id': 0}
+    count = 1
+    for x in (image_list):
+        image_dict.update({count: x})
+        count += 1
+        
+    return image_dict
+        
