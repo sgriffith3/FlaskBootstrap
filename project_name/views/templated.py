@@ -4,7 +4,7 @@ import logging
 import subprocess
 from flask import render_template, Blueprint
 
-from <project_name>.config import config
+from project_name.config import config
 
 
 blueprint = Blueprint('templated', __name__, template_folder='templates')
