@@ -1,0 +1,15 @@
+# /etc/systemd/system/nodifyer.service
+
+[Unit]
+Description=nodifyer
+After=network.target
+
+[Service]
+Restart=on-failure
+RestartSec=20
+User=nodifyer
+WorkingDirectory=/opt/nodifyer/src/
+ExecStart=/opt/nodifyer/venv/bin/python -m nodifyer
+
+[Install]
+WantedBy=multi-user.target

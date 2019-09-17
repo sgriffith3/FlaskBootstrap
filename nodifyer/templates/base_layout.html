@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/static/css/nodifyer.css"/>
+    <script type="application/javascript" src="/static/js/nodifyer.js"></script>
+
+    {% block head %}
+    {% endblock %}
+
+    <title>nodifyer - {% block title %}{% endblock %}</title>
+</head>
+<body>
+
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="footer">
+    {% block footer %}
+        &copy; Copyright 2018 by nodifyer
+    {% endblock %}
+</div>
+
+
+</body>
+</html>
