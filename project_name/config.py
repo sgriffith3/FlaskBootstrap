@@ -15,7 +15,7 @@ log = logging.getLogger('<project_name>')
 
 config = Box({
     "env": "production",
-    "host": "127.0.0.1",
+    "host": "0.0.0.0",
     "port": 12345,
     "session_cache_dir": os.path.join(here, "cache", "session"),
     "session_secret": 'bad_secret',  # make real one with os.urandom(32).hex()
