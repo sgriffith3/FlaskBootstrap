@@ -9,7 +9,7 @@ from <project_name>.config import config
 
 blueprint = Blueprint('templated', __name__, template_folder='templates')
 
-log = logging.getLogger('NodifyerAPI')
+log = logging.getLogger('<project_name>')
 
 
 @blueprint.route('/')
@@ -39,12 +39,28 @@ def return_info():
 
 @blueprint.route('/images')
 def return_image_ls():
-    image_list = subprocess.check_output(['ls', '/var/qemu/images']).split('\n')
+    """ Searches through the /var/qemu/images directory and returns all filenames"""
+    image_str= subprocess.check_output(['ls', '/var/qemu/images'])
     image_dict = {'id': 0}
     count = 1
-    for x in (image_list):
-        image_dict.update({count: x})
+    image_list = image_str.decode('utf-8').split('\n')
+    for x in image_list:
+        image_dict.update({f'id_{count}': x})
         count += 1
-        
+
     return image_dict
+
+
+@blueprint.route('/logs')
+def return_logs_ls():
+    """ Searches through the /var/log/qemu directory and returns all filenames"""
+    log_str = subprocess.check_output(['ls', '/var/log/qemu/'])
+    log_dict = {'id': 0}
+    count = 1
+    log_list = log_str.decode('utf-8').split('\n')
+    for x in log_list:
+        log_dict.update({f'id_{count}': x})
+        count += 1
+
+    return log_dict
         
