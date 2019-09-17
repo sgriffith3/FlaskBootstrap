@@ -9,37 +9,25 @@ Designed for:
 Run the setup to rename everything to your own project name.
 
 ```bash
+sudo apt-get install python3-venv
 python3 -m venv venv
 source venv/bin/activate
 pip3 install reusables
 python3 project_setup.py
-# PUT YOUR CODE IN NOW!
-# It goes in <project_name>/views/templated.py
-# Massage it in to existing code
-# Yes, I mean manually
-# Yes, I am sure
+```
+
+### PUT YOUR CODE IN NOW!
+### It goes in <project_name>/views/templated.py
+### Massage it in to existing code
+### Yes, I mean manually
+### Yes, I am sure
 ### DON"T GO PAST THIS POINT WITHOUT ADDING YOUR CODE
-chmod +x deploy.sh
-sudo deploy.sh
-```
 
-Create your own config file at /FlaskBootstrap/<project_name>.config.yaml 
-
-Should contain the following items:
-
-```yaml
-env: production
-host: 0.0.0.0
-port: 8080 # Should match the one in <project_name>.nginx
-session_secret: bad_secret  # make real one with os.urandom(32).hex()
-```
-
-
-Run the project:
+Deploy your project as a daemon and start the service
 
 ```bash
-pip install -r requirements.txt
-python -m project_name
+chmod +x deploy.sh
+sudo ./deploy.sh
 ```
 
 ## Deploy for project_name
