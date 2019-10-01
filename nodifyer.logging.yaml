@@ -18,7 +18,7 @@ handlers:
        stream: 'ext://sys.stderr'
    file:
         class: 'logging.FileHandler'
-        filename: '<project_name>.log'
+        filename: 'nodifyer.log'
         mode: 'a'
         formatter: 'standard'
 
@@ -27,7 +27,7 @@ loggers:
        handlers: ['default']
        level: 'INFO'
        propagate: True
-   <project_name>:
+   nodifyer:
        handlers: ['default','error', 'file']
        level: 'DEBUG'
        propagate: False
