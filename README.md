@@ -12,7 +12,7 @@ Designed for:
 In order to deploy nodifyer, all you have to do is clone this directory, move into the right branch **nodifyer**, then run the **deploy.sh** script.
 
 ```bash
-wget https://github.com/sgriffith3/FlaskBootstrap.git
+git clone https://github.com/sgriffith3/FlaskBootstrap.git
 cd FlaskBootstrap
 git checkout nodifyer
 sudo ./deploy.sh
